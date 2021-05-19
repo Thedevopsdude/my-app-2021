@@ -23,13 +23,13 @@ pipeline{
           def pom = readMavenPom file: 'pom.xml'
           def repository = pom.version.endsWith("SNAPSHOT") ? 'javahome-snapshot' : 'javahome-release'
           nexusArtifactUploader artifacts: 
-          [[artifactId: 'myweb', classifier: '', file: 'myweb-0.0.1-SNAPSHOT,war', type: 'war']], 
+          [[artifactId: 'myweb', classifier: '', file: 'target/myweb-0.0.1-SNAPSHOT,war', type: 'war']], 
           credentialsId: 'nexus3', 
           groupId: 'in.javahome', 
           nexusUrl: '172.31.29.72:8081', 
           nexusVersion: 'nexus3', protocol: 'http', 
           repository: javahome-snapshot, 
-          version: 0.0.1-SNAPSHOT
+          version: '0.0.1-SNAPSHOT'
         }
       }
     }
